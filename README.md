@@ -37,6 +37,14 @@ hashLength = 32
 # Hashing Str and return hex string
 hashedString: str = Hash.BasicHashStrToHex(textToHash, hashSize=hashLength)
 print("Hashed string :", hashedString)
+
+hashAlgo = Hash.HASH_ALGO_BCRYPT
+hashedString: str = Hash.AdvancedHashWithRandomSalt(textToHash, hashAlgo, randomSaltSize=[22, 35], costFactor=14, blockSize=8, parallelism=1, memoryCost=64000)
+print("Hashed string :", hashedString)
+textToVerify = "Some text to verify"
+isGoodPassword = Hash.AdvancedHashVerification(hashedString, textToVerify)
+print(f"{textToVerify = } == {hashedString = } : {isGoodPassword}")
+
 ```
 
 ### 3. Converting

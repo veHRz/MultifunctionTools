@@ -1,25 +1,25 @@
 """
-This module is part of the "TestCrypto" module which belongs to "https://github.com/veHRz" and provides access to various functions to help cipher and decipher.
+This module is part of the "MultifunctionTools" module which belongs to "https://github.com/veHRz" and provides access to various functions to help cipher and decipher.
 """
 
 from MultifunctionTools.Hash import * # Library from the TestCrypto module to help Hashing
 from MultifunctionTools.Exceptions import * # Library from the TestCrypto module to use custom error
 
 # Librairies for the normal Cipher and decipher
-from Crypto.Cipher import AES
-from Crypto import Random
+from Cryptodome.Cipher import AES
+from Cryptodome import Random
 
 # Libraries for simples other hash algos
-from Crypto.Hash import SHA224
-from Crypto.Hash import SHA256
-from Crypto.Hash import SHA384
-from Crypto.Hash import SHA512
-from Crypto.Hash import SHA3_224
-from Crypto.Hash import SHA3_256
-from Crypto.Hash import SHA3_384
-from Crypto.Hash import SHA3_512
-from Crypto.Hash import BLAKE2s
-from Crypto.Hash import BLAKE2b
+from Cryptodome.Hash import SHA224
+from Cryptodome.Hash import SHA256
+from Cryptodome.Hash import SHA384
+from Cryptodome.Hash import SHA512
+from Cryptodome.Hash import SHA3_224
+from Cryptodome.Hash import SHA3_256
+from Cryptodome.Hash import SHA3_384
+from Cryptodome.Hash import SHA3_512
+from Cryptodome.Hash import BLAKE2s
+from Cryptodome.Hash import BLAKE2b
 import random
 
 # Libraries for the Advanced Cipher and Decipher
@@ -86,7 +86,6 @@ def __CipherToHexWithPassword(strOrBytesToCipher: str | bytes, password: str | b
     return __CipherToBytesWithPassword(strOrBytesToCipher, password).hex()
 
 
-
 def DecipherBytesWithPasswordHashed(bytesToDecipher: bytes, password: str | bytes, randomHashAlgoForPassword: bool = True) -> str | bytes:
     if randomHashAlgoForPassword:
         for hashAlgo in __SIMPLES_OTHER_HASH_ALGOS:
@@ -121,6 +120,7 @@ def DecipherBytesWithPassword(bytesToDecipher: bytes, password: str | bytes) -> 
 
 def DecipherHexWithPassword(hexToDecipher: str, password: str | bytes) -> str | bytes:
     return DecipherBytesWithPassword(bytes().fromhex(hexToDecipher), password)
+
 
 def AdvancedCipherWithSaltPassword(message: str | bytes, password: str | bytes, saltPassword: str | bytes = b'salt_', *, ReturnTheEncryptTextAndTagAsASingleValue: bool = True, useThisCustomSeparatorBetweenCipherTextAndTag: bytes | str | None = None) -> bytes | tuple[bytes, bytes]:
     """
