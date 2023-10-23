@@ -2,6 +2,17 @@
 
 The `MultifunctionTools` library is a comprehensive collection of handy utilities and tools designed to enhance your Python coding experience. Whether you're a beginner or an experienced developer, `MultifunctionTools` provides a set of functionalities to simplify and streamline various aspects of Python programming.
 
+## Summary
+
+* [Features](#features)
+  * [1. Ciphering Text](#1-ciphering-text)
+  * [2. Hashing Text](#2-hashing-text)
+  * [3. Converting](#3-converting)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contribution](#contribution)
+* [License](#license)
+
 ## Features
 
 ### 1. Ciphering Text
@@ -16,11 +27,11 @@ saltPassword = "superPasswordNumber2"
 message = b"This is a secret message."
 
 # Cipher text with two passwords
-cipherText = Cipher.AdvancedCipherWithSaltPassword(message, password, saltPassword=saltPassword)
+cipherText = Cipher.AdvancedCipher(message, password, saltPassword=saltPassword)
 print("Ciphered text :", cipherText)
 
 # Decipher text with two passwords
-decipherText = Cipher.AdvancedDecipherWithSaltPassword(cipherText, password, saltPassword=saltPassword)
+decipherText = Cipher.AdvancedDecipher(cipherText, password, saltPassword=saltPassword)
 print("Deciphered text :", decipherText)
 ```
 
@@ -35,21 +46,20 @@ textToHash = "Some text to hash"
 hashLength = 32
 
 # Hashing Str and return hex string
-hashedString: str = Hash.BasicHashStrToHex(textToHash, hashSize=hashLength)
+hashedString: str = Hash.BasicHashToHex(textToHash, hashSize=hashLength)
 print("Hashed string :", hashedString)
 
 hashAlgo = Hash.HASH_ALGO_BCRYPT
-hashedString: str = Hash.AdvancedHashWithRandomSalt(textToHash, hashAlgo, randomSaltSize=[22, 35], costFactor=14, blockSize=8, parallelism=1, memoryCost=64000)
+hashedString: str = Hash.AdvancedHash(textToHash, hashAlgo, randomSaltSize=[22, 35], costFactor=14, blockSize=8, parallelism=1, memoryCost=64000)
 print("Hashed string :", hashedString)
 textToVerify = "Some text to verify"
 isGoodPassword = Hash.AdvancedHashVerification(hashedString, textToVerify)
 print(f"{textToVerify = } == {hashedString = } : {isGoodPassword}")
-
 ```
 
 ### 3. Converting
 
-A range of tools that allow you to easily convert files, values ​​and many other things.
+A range of tools that let you easily convert images (but more coming soon).
 
 ```python
 from MultifunctionTools import Convert
@@ -87,7 +97,7 @@ Contributions to the `MultifunctionTools` library are welcome! If you have an id
 
 ## License
 
-This project is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. - see the [LICENSE](https://github.com/veHRz/MultifunctionTools/blob/master/LICENSE.md) file for details.
+This project is licensed under the MIT License. - see the [LICENSE](https://github.com/veHRz/MultifunctionTools/blob/master/LICENSE.md) file for details.
 
 ---
 

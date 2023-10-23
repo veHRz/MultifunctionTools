@@ -1,7 +1,7 @@
-from MultifunctionTools import Cipher
-from MultifunctionTools import Convert
-from MultifunctionTools import Exceptions
-from MultifunctionTools import Hash
+from . import Cipher
+from . import Convert
+from . import Exceptions
+from . import Hash
 
 __all__ = ["Cipher", "Hash", "Convert", "Exceptions"]
 
