@@ -59,7 +59,7 @@ print(f"{textToVerify = } == {hashedString = } : {isGoodPassword}")
 
 ### 3. Converting
 
-A range of tools that let you easily convert images (but more coming soon).
+A range of tools that let you easily convert images and python types (but more coming soon).
 
 ```python
 from MultifunctionTools import Convert
@@ -69,6 +69,9 @@ newImageFilePath = "some/path/to/image.png"
 
 # Converting base image to a new png image
 Convert.ConvertImageToPng(baseImageFilePath, newImageFilePath)
+
+# Converting list of string/bytes to bytes
+Convert.ConvertToBytes(["string", b"to convert", "in bytes"])
 ```
 
 ## Installation

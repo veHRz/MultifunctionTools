@@ -8,6 +8,8 @@ from Cryptodome.Hash import SHA3_224
 from Cryptodome.Hash import SHA3_256
 from Cryptodome.Hash import SHA3_384
 from Cryptodome.Hash import SHA3_512
+from Cryptodome.Hash import TupleHash128
+from Cryptodome.Hash import TupleHash256
 from Cryptodome.Hash import BLAKE2s
 from Cryptodome.Hash import BLAKE2b
 from Cryptodome.Protocol.KDF import bcrypt, bcrypt_check
@@ -28,9 +30,10 @@ HASH_ALGO_SHA3_224: Literal["sha3_224"] = "sha3_224"
 HASH_ALGO_SHA3_256: Literal["sha3_256"] = "sha3_256"
 HASH_ALGO_SHA3_384: Literal["sha3_384"] = "sha3_384"
 HASH_ALGO_SHA3_512: Literal["sha3_512"] = "sha3_512"
+HASH_ALGO_TUPLEHASH128: Literal["tuple128"] = "tuple128"
+HASH_ALGO_TUPLEHASH256: Literal["tuple256"] = "tuple256"
 HASH_ALGO_BLAKE2S: Literal["blake2s"] = "blake2s"
 HASH_ALGO_BLAKE2B: Literal["blake2b"] = "blake2b"
 HASH_ALGO_BCRYPT: Literal["bcrypt"] = "bcrypt"
 HASH_ALGO_SCRYPT: Literal["scrypt"] = "scrypt"
 HASH_ALGO_ARGON2: Literal["argon2"] = "argon2"
-

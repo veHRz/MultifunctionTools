@@ -73,28 +73,40 @@ def TestConvert(pathToImageWithoutExtension: str = r"image", imageExtension: str
     ConvertImageToWebp(pathToImageWithoutExtension+imageExtension, pathToImageWithoutExtension+".webp", size)
     ConvertImageToPdf(pathToImageWithoutExtension+imageExtension, pathToImageWithoutExtension+".pdf", size)
 
-def TestAdvancedHash(stringToHash: str = "test", stringToVerify: str = "test"):
+def TestAdvancedHash(stringToHash: bytes | str | list[bytes | str] | tuple[bytes | str] | set[bytes | str] = ("test", "test2"), stringToVerify: bytes | str | list[bytes | str] | tuple[bytes | str] | set[bytes | str] = ("test", "test2"), randomSaltSize: list[int, int] | tuple[int, int] = (30 ,32)):
     print("================= Random =================")
     hashAlgo = HASH_ALGO_RANDOM
-    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=[20, 20])
+    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=randomSaltSize)
+    print(f"String hashed : {hashStr}")
+    print(f"String verify : {stringToVerify} ; result : {AdvancedHashVerification(hashStr, stringToVerify)}")
+
+    print("================= TupleHash128 or TupleHash256 =================")
+    hashAlgo = random.choice([HASH_ALGO_TUPLEHASH128, HASH_ALGO_TUPLEHASH256])
+    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=randomSaltSize)
+    print(f"String hashed : {hashStr}")
+    print(f"String verify : {stringToVerify} ; result : {AdvancedHashVerification(hashStr, stringToVerify)}")
+
+    print("================= BLAKE2s or BLAKE2b =================")
+    hashAlgo = random.choice([HASH_ALGO_BLAKE2S, HASH_ALGO_BLAKE2B])
+    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=randomSaltSize)
     print(f"String hashed : {hashStr}")
     print(f"String verify : {stringToVerify} ; result : {AdvancedHashVerification(hashStr, stringToVerify)}")
 
     print("================= Bcrypt =================")
     hashAlgo = HASH_ALGO_BCRYPT
-    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=[20, 20])
+    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=randomSaltSize)
     print(f"String hashed : {hashStr}")
     print(f"String verify : {stringToVerify} ; result : {AdvancedHashVerification(hashStr, stringToVerify)}")
 
     print("================= Scrypt =================")
     hashAlgo = HASH_ALGO_SCRYPT
-    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=[20, 20])
+    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=randomSaltSize)
     print(f"String hashed : {hashStr}")
     print(f"String verify : {stringToVerify} ; result : {AdvancedHashVerification(hashStr, stringToVerify)}")
 
     print("================= Argon2 =================")
     hashAlgo = HASH_ALGO_ARGON2
-    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=[20, 20])
+    hashStr = AdvancedHash(stringToHash=stringToHash, hashAlgo=hashAlgo, randomSaltSize=randomSaltSize)
     print(f"String hashed : {hashStr}")
     print(f"String verify : {stringToVerify} ; result : {AdvancedHashVerification(hashStr, stringToVerify)}")
 

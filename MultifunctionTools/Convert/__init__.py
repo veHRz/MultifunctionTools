@@ -3,3 +3,4 @@ This module is part of the "MultifunctionTools" module which belongs to "https:/
 """
 
 from .__convertImage import *
+from .__convertType import *
